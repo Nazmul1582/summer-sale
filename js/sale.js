@@ -108,3 +108,8 @@ setProduct(sportsCates);
 setProduct(chair);
 setProduct(childrenPlay);
 setProduct(sofa);
+
+// redirect to home page or refresh home page
+goHomeBtn.addEventListener("click", function () {
+  window.location.href = "index.html";
+});
