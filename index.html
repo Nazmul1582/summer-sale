@@ -205,7 +205,7 @@
                   >
                     <img
                       src="./images/prod4.png"
-                      alt="prod5ct"
+                      alt="product"
                       class="rounded-xl"
                     />
                   </figure>
@@ -342,7 +342,7 @@
                   >
                     <img
                       src="./images/prod7.png"
-                      alt="prod5ct"
+                      alt="product"
                       class="rounded-xl"
                     />
                   </figure>
@@ -489,10 +489,7 @@
               </div>
             </div>
             <div class="bg-white p-6 mt-5 shadow-md rounded-lg font-semibold">
-              <!-- <h3>0 product selected</h3> -->
-              <ol class="list-decimal ml-5" id="product-list">
-                <!-- <li>Home Cooker</li> -->
-              </ol>
+              <ol class="list-decimal ml-5" id="product-list"></ol>
               <div class="divider"></div>
               <div class="mt-3">
                 <h3>
@@ -509,9 +506,33 @@
               </div>
               <div class="divider"></div>
               <div class="grid place-items-center">
-                <button class="btn btn-secondary" id="make-purchase-btn">
+                <button
+                  onclick="make_purchase_btn.showModal()"
+                  class="btn btn-secondary"
+                >
                   Make Purchase
                 </button>
+                <dialog id="make_purchase_btn" class="modal">
+                  <form method="dialog" class="modal-box text-center">
+                    <img
+                      class="mx-auto my-5"
+                      src="./images/congo.png"
+                      alt="congo"
+                    />
+                    <h3 class="font-bold text-3xl">Congratulations</h3>
+                    <p class="py-4 text-gray-500 font-normal">
+                      Your Purchase the product
+                    </p>
+                    <div class="modal-action">
+                      <button
+                        class="btn btn-secondary mx-auto mb-10"
+                        id="go-home-btn"
+                      >
+                        Go Home
+                      </button>
+                    </div>
+                  </form>
+                </dialog>
               </div>
             </div>
           </div>

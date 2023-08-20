@@ -18,7 +18,7 @@ const totalField = document.getElementById("total");
 
 const coupon = document.getElementById("coupon-code");
 const applyBtn = document.getElementById("applyBtn");
-const makePurchaseBtn = document.getElementById("make-purchase-btn");
+const goHomeBtn = document.getElementById("go-home-btn");
 
 // get product name
 function getProductName(targetedElement) {
