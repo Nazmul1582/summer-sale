@@ -18,6 +18,7 @@ const totalField = document.getElementById("total");
 
 const coupon = document.getElementById("coupon-code");
 const applyBtn = document.getElementById("applyBtn");
+const purchaseBtn = document.getElementById("purchaseBtn");
 const goHomeBtn = document.getElementById("go-home-btn");
 
 // get product name
@@ -56,7 +57,13 @@ function setProduct(targetedElement) {
     discountField.innerText = "0.00 TK";
 
     // set total
-    totalField.innerText = `${getTotalPrice()} TK.`;
+    const totalPrice = getTotalPrice();
+    totalField.innerText = `${totalPrice} TK.`;
+
+    // enabled purchase button
+    if (totalPrice > 0) {
+      purchaseBtn.removeAttribute("disabled");
+    }
   });
 }
 
@@ -81,7 +88,7 @@ function getDiscount() {
 
 // removing disabled from apply button
 coupon.addEventListener("keyup", function () {
-  if (coupon.value === "SALE20") {
+  if (coupon.value === "SALE200") {
     applyBtn.removeAttribute("disabled");
   } else {
     applyBtn.setAttribute("disabled", true);
