@@ -47,10 +47,13 @@ function setProduct(targetedElement) {
     totalPriceArr.push(actualPrice);
 
     // set total price
-    totalPriceField.innerText = `${getTotalPrice()} TK`;
+    totalPriceField.innerText = `${getTotalPrice()} TK.`;
 
     // set discount amount
-    discount.innerText = `${getDiscount()} TK`;
+    discount.innerText = `${getDiscount()} TK.`;
+
+    // set total
+    total.innerText = `${getFinalPrice()} TK.`;
   });
 }
 
@@ -71,6 +74,14 @@ function getDiscount() {
     discount = totalPrice * (20 / 100);
   }
   return discount.toFixed(2);
+}
+
+// final price
+function getFinalPrice() {
+  const totalPrice = getTotalPrice();
+  const discount = getDiscount();
+  const total = totalPrice - discount;
+  return total.toFixed(2);
 }
 
 // select products for puschase
