@@ -16,6 +16,10 @@ const totalPriceField = document.getElementById("total-price");
 const discountField = document.getElementById("discount");
 const totalField = document.getElementById("total");
 
+const coupon = document.getElementById("coupon-code");
+const applyBtn = document.getElementById("applyBtn");
+const makePurchaseBtn = document.getElementById("make-purchase-btn");
+
 // get product name
 function getProductName(targetedElement) {
   let card = targetedElement.parentNode;
@@ -66,7 +70,7 @@ function getTotalPrice() {
   return sum.toFixed(2);
 }
 
-// discount functionality
+// discount function
 function getDiscount() {
   let discount = 0;
   const totalPrice = getTotalPrice();
@@ -83,6 +87,15 @@ function getFinalPrice() {
   const total = totalPrice - discount;
   return total.toFixed(2);
 }
+
+// removing disabled from apply button;
+coupon.addEventListener("keyup", function () {
+  if (coupon.value === "SALE20") {
+    applyBtn.removeAttribute("disabled");
+  } else {
+    applyBtn.setAttribute("disabled", true);
+  }
+});
 
 // select products for puschase
 setProduct(kAccessories);
