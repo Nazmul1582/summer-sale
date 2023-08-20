@@ -41,6 +41,10 @@ setProduct(accessories);
 setProduct(cooker);
 setProduct(cap);
 setProduct(fullJerseySet);
+setProduct(sportsCates);
+setProduct(chair);
+setProduct(childrenPlay);
+setProduct(sofa);
 
 // kAccessories.addEventListener("click", function () {
 //   const list = document.createElement("li");
