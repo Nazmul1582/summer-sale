@@ -32,7 +32,7 @@ function getProductPrice(targetedElement) {
 
 const totalPriceArr = [];
 
-// get all selected product
+// get all selected products and prices
 function setProduct(targetedElement) {
   targetedElement.addEventListener("click", function () {
     let productName = getProductName(targetedElement);
@@ -40,23 +40,37 @@ function setProduct(targetedElement) {
     li.innerText = productName;
     productList.appendChild(li);
 
-    // get selected product's price and set total price
+    // get selected product's price
     let priceString = getProductPrice(targetedElement);
     let price = priceString.slice(0, -3);
     let actualPrice = parseInt(price);
     totalPriceArr.push(actualPrice);
 
-    setTotalPrice();
+    // set total price
+    totalPriceField.innerText = `${getTotalPrice()} TK`;
+
+    // set discount amount
+    discount.innerText = `${getDiscount()} TK`;
   });
 }
 
 // calculate total price
-function setTotalPrice() {
+function getTotalPrice() {
   let sum = 0;
   for (p of totalPriceArr) {
     sum += p;
   }
-  totalPriceField.innerText = sum.toFixed(2);
+  return sum.toFixed(2);
+}
+
+// discount functionality
+function getDiscount() {
+  let discount = 0;
+  const totalPrice = getTotalPrice();
+  if (totalPrice >= 200) {
+    discount = totalPrice * (20 / 100);
+  }
+  return discount.toFixed(2);
 }
 
 // select products for puschase
