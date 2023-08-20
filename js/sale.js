@@ -64,6 +64,13 @@ function setProduct(targetedElement) {
     if (totalPrice > 0) {
       purchaseBtn.removeAttribute("disabled");
     }
+
+    // removing disabled from apply button
+    if (totalPrice >= 200) {
+      applyBtn.removeAttribute("disabled");
+    } else {
+      applyBtn.setAttribute("disabled", true);
+    }
   });
 }
 
@@ -86,23 +93,14 @@ function getDiscount() {
   return discountPrice.toFixed(2);
 }
 
-// removing disabled from apply button
-coupon.addEventListener("keyup", function () {
-  if (coupon.value === "SALE200") {
-    applyBtn.removeAttribute("disabled");
-  } else {
-    applyBtn.setAttribute("disabled", true);
-  }
-});
-
 applyBtn.addEventListener("click", function () {
-  discountPrice = getDiscount();
-  discountField.innerText = `${discountPrice} TK`;
-  let total = getTotalPrice() - discountPrice;
-  totalField.innerText = `${total.toFixed(2)} TK`;
-
+  if (coupon.value === "SALE200") {
+    discountPrice = getDiscount();
+    discountField.innerText = `${discountPrice} TK`;
+    let total = getTotalPrice() - discountPrice;
+    totalField.innerText = `${total.toFixed(2)} TK`;
+  }
   coupon.value = "";
-  applyBtn.setAttribute("disabled", true);
 });
 
 // select products for puschase
