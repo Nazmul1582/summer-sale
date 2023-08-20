@@ -52,12 +52,11 @@ function setProduct(targetedElement) {
 
     // set total price
     totalPriceField.innerText = `${getTotalPrice()} TK.`;
-
-    // set discount amount
-    discount.innerText = `${getDiscount()} TK.`;
+    // set discount price
+    discountField.innerText = "0.00 TK";
 
     // set total
-    total.innerText = `${getFinalPrice()} TK.`;
+    totalField.innerText = `${getTotalPrice()} TK.`;
   });
 }
 
@@ -72,29 +71,31 @@ function getTotalPrice() {
 
 // discount function
 function getDiscount() {
-  let discount = 0;
+  let discountPrice = 0;
   const totalPrice = getTotalPrice();
   if (totalPrice >= 200) {
-    discount = totalPrice * (20 / 100);
+    discountPrice = totalPrice * (20 / 100);
   }
-  return discount.toFixed(2);
+  return discountPrice.toFixed(2);
 }
 
-// final price
-function getFinalPrice() {
-  const totalPrice = getTotalPrice();
-  const discount = getDiscount();
-  const total = totalPrice - discount;
-  return total.toFixed(2);
-}
-
-// removing disabled from apply button;
+// removing disabled from apply button
 coupon.addEventListener("keyup", function () {
   if (coupon.value === "SALE20") {
     applyBtn.removeAttribute("disabled");
   } else {
     applyBtn.setAttribute("disabled", true);
   }
+});
+
+applyBtn.addEventListener("click", function () {
+  discountPrice = getDiscount();
+  discountField.innerText = `${discountPrice} TK`;
+  let total = getTotalPrice() - discountPrice;
+  totalField.innerText = `${total.toFixed(2)} TK`;
+
+  coupon.value = "";
+  applyBtn.setAttribute("disabled", true);
 });
 
 // select products for puschase
