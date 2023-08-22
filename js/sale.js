@@ -94,7 +94,7 @@ function getDiscount() {
 }
 
 applyBtn.addEventListener("click", function () {
-  if (coupon.value === "SALE200") {
+  if (coupon.value === "SELL200") {
     discountPrice = getDiscount();
     discountField.innerText = `${discountPrice} TK`;
     let total = getTotalPrice() - discountPrice;
